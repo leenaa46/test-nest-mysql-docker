@@ -1,9 +1,18 @@
-import { BadRequestException, Body, Controller, Post } from '@nestjs/common';
+import {
+  BadRequestException,
+  Body,
+  Controller,
+  Post,
+  Get,
+} from '@nestjs/common';
 import { DepositService } from '../deposit/deposit.service';
 import { DepositDto } from '../deposit/dto/deposit.dto';
+import { Deposit } from '../deposit/entities/deposit.entity';
+
 @Controller()
 export class DepositController {
   constructor(private readonly depositService: DepositService) {}
+
   @Post('/deposit')
   async syncDeposit(@Body() deposit: DepositDto) {
     try {
@@ -12,5 +21,10 @@ export class DepositController {
     } catch (error) {
       throw new BadRequestException('somenthin went wrong');
     }
+  }
+
+  @Get('/deposit')
+  async getDeposits(): Promise<Deposit[]> {
+    return this.depositService.getDeposits();
   }
 }

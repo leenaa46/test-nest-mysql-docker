@@ -29,6 +29,9 @@ let DepositController = class DepositController {
             throw new common_1.BadRequestException('somenthin went wrong');
         }
     }
+    async getDeposits() {
+        return this.depositService.getDeposits();
+    }
 };
 __decorate([
     (0, common_1.Post)('/deposit'),
@@ -37,6 +40,12 @@ __decorate([
     __metadata("design:paramtypes", [deposit_dto_1.DepositDto]),
     __metadata("design:returntype", Promise)
 ], DepositController.prototype, "syncDeposit", null);
+__decorate([
+    (0, common_1.Get)('/deposit'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], DepositController.prototype, "getDeposits", null);
 DepositController = __decorate([
     (0, common_1.Controller)(),
     __metadata("design:paramtypes", [deposit_service_1.DepositService])

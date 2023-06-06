@@ -5,4 +5,5 @@ export declare class DepositService {
     private readonly depositRepository;
     constructor(depositRepository: Repository<Deposit>);
     syncDeposit(deposit: DepositDto): Promise<void>;
+    getDeposits(): Promise<Deposit[]>;
 }

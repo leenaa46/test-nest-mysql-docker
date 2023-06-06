@@ -24,6 +24,9 @@ let DepositService = class DepositService {
     async syncDeposit(deposit) {
         await this.depositRepository.save(Object.assign(Object.assign({}, deposit), { depositDate: new Date().toISOString() }));
     }
+    async getDeposits() {
+        return this.depositRepository.find();
+    }
 };
 DepositService = __decorate([
     (0, common_1.Injectable)(),
